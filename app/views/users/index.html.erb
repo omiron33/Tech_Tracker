@@ -1,0 +1,25 @@
+<h1>Welcome, <%= current_user.first_name %></h1>
+<% if current_user.user_level >= 4 %>
+    <h3>Your Direct Reports</h3>
+    <% current_user.employees.each do |employee| %>
+        <p><a href="/users/<%= employee.id %>"><%= employee.first_name %> <%= employee.last_name %></a></p>
+    <% end %>
+<% end %>
+<h3>Your Teammates</h3>
+<% @team.each do |i| %>
+    <% i.each do |teammate| %>
+        <p><a href="/users/<%= teammate.id %>"><%= teammate.first_name %> <%= teammate.last_name %></a></p>
+    <% end %>
+<% end %>
+<h3>Recent Team Sales</h3>
+<% current_user.employees.each do |employee| %>
+    <% employee.sales.each do |sale| %>
+        <p><%= sale.transaction_date %></p>
+        <p>Customer:<a href="/customers/<%= sale.customer_id %>"> <%= sale.customer.first_name %> <%= sale.customer.last_name %></a></p>
+        <% sale.computers.each do |computer| %>
+            <p><%= computer.sku %></p>
+            <p><%= computer.description %></p>
+        <% end %>
+    <% end %>
+<% end %>
+

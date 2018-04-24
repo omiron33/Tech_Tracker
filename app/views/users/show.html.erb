@@ -1,0 +1,11 @@
+<h1><%= @user.first_name %> <%= @user.last_name %></h1>
+<h2>Recent Sales by <%= @user.first_name %></h2>
+<% @user.sales.each do |sale| %>
+<p><%= sale.transaction_date %></p>
+<% sale.computers.each do |computer| %>
+<p><%= computer.sku %></p>
+<p><%= computer.description %></p>
+<p><a href="/computers/<%= computer.id %>"><%= computer.serial %></a>
+</p>
+<% end %>
+<% end %>
