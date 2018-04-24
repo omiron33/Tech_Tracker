@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :sales
   has_many :locations
-  has_many :schools, through: :locations
+  has_many :stores, through: :locations
   has_many :customers, through: :sales
   has_many :sold_computers, through: :sales, source: :computers
   

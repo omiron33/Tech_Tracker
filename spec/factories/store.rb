@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :location do
-    store nil
+  factory :store do
     user nil
+    school nil
   end
 end

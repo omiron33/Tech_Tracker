@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :computers
   
-
+  
   post 'sessions' => 'sessions#create'
 
   delete 'sessions' => 'sessions#destroy'

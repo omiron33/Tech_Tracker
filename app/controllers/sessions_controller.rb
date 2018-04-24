@@ -2,16 +2,19 @@ class SessionsController < ApplicationController
     skip_before_action :require_login, only: [:new, :create]
     
     def create
-        if (params[:email]) == "" || (params[:password]) == ""
+        if (params[:employee_number]) == "" || (params[:password]) == ""
             flash[:errors] = ["Login Fields can not be blank"]
             return redirect_to :back
         end
-        @user = User.find_by(email: params[:email].downcase)
+        @user = User.find_by(employee_number: params[:employee_number])
             # Log User In
         if @user
             if @user.authenticate(params[:password])
                 id = @user.id
                 session[:user_id] = @user.id
+                if current_user.user_level < 1
+                    return redirect_to new_user_path
+                end
                 redirect_to users_path
             else
             flash[:errors] = ["Email / Password do not match"]

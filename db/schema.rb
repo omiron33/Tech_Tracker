@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422053624) do
+ActiveRecord::Schema.define(version: 20180424202920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,13 +50,13 @@ ActiveRecord::Schema.define(version: 20180422053624) do
   add_index "customers", ["school_id"], name: "index_customers_on_school_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
+    t.integer  "store_id"
     t.integer  "user_id"
-    t.integer  "school_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "locations", ["school_id"], name: "index_locations_on_school_id", using: :btree
+  add_index "locations", ["store_id"], name: "index_locations_on_store_id", using: :btree
   add_index "locations", ["user_id"], name: "index_locations_on_user_id", using: :btree
 
   create_table "plans", force: :cascade do |t|
@@ -95,6 +95,15 @@ ActiveRecord::Schema.define(version: 20180422053624) do
 
   add_index "schools", ["color_id"], name: "index_schools_on_color_id", using: :btree
 
+  create_table "stores", force: :cascade do |t|
+    t.integer  "school_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "store_number"
+  end
+
+  add_index "stores", ["school_id"], name: "index_stores_on_school_id", using: :btree
+
   create_table "teams", force: :cascade do |t|
     t.integer  "leader_id"
     t.datetime "created_at",  null: false
@@ -112,16 +121,18 @@ ActiveRecord::Schema.define(version: 20180422053624) do
     t.integer  "user_level"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "employee_number"
   end
 
   add_foreign_key "computers", "sales"
   add_foreign_key "computers", "schools"
   add_foreign_key "customers", "schools"
-  add_foreign_key "locations", "schools"
+  add_foreign_key "locations", "stores"
   add_foreign_key "locations", "users"
   add_foreign_key "plans", "schools"
   add_foreign_key "sales", "customers"
   add_foreign_key "sales", "users"
   add_foreign_key "schools", "colors"
+  add_foreign_key "stores", "schools"
   add_foreign_key "teams", "users", column: "leader_id"
 end
