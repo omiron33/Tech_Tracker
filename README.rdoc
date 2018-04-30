@@ -1,27 +1,22 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Production
 
-Things you may want to cover:
+To Do list:
 
-* Ruby version
+Model validations
 
-* System dependencies
+add new registrant homepage/ registrant authorization for admin/manager
 
-* Configuration
+add team member to team on manager & ^ page
 
-* Database creation
+add search by serial (api?) and add computer to database, both to inventory and search strings. Have seperate DB for adding maybe, similar to spreadsheet?  / import csv for computer list
 
-* Database initialization
+figure out how to use hex color from DB to dynamically update page
 
-* How to run the test suite
+add Ajax to show updated values from SkuList when adding computer
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Drop down rather than static menu / Search by (Sku, serial, model, etc)
 
 
 Please feel free to use a different markup language if you do not plan to run
