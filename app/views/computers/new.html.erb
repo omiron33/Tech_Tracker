@@ -1,0 +1,26 @@
+<h1>Receive a new computer by:</h1> 
+<label for="sku-dropdown">Sku</label>
+<select name="sku-dropdown" id="sku-dropdown">
+    <% @skulist.each do |computer| %>
+    <option class="class-option" value="<%= computer.sku %>"><%= computer.sku %></option>
+    <% end %>
+</select>
+<label for="desc-dropdown">Description</label>
+<select name="desc-dropdown" id="desc-dropdown">
+    <% @skulist.each do |computer| %>
+        <option class="class-option" value="<%= computer.description %>">
+            <%= computer.description %>
+        </option>
+        <% end %>
+</select>
+<label for="model-dropdown">Model</label>
+<select name="model-dropdown" id="model-dropdown">
+    <% @skulist.each do |computer| %>
+        <option class="class-option" value="<%= computer.model_number %>">
+            <%= computer.model_number %>
+        </option>
+        <% end %>
+</select>
+<div id="compform"></div>
+
+

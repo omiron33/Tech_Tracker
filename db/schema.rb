@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424202920) do
+ActiveRecord::Schema.define(version: 20180425224009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,19 +24,21 @@ ActiveRecord::Schema.define(version: 20180424202920) do
   end
 
   create_table "computers", force: :cascade do |t|
-    t.integer  "sku"
-    t.string   "description"
     t.string   "serial"
     t.date     "rec_date"
     t.integer  "school_id"
     t.integer  "sale_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean  "sold"
+    t.integer  "skulist_id"
+    t.integer  "store_id"
   end
 
   add_index "computers", ["sale_id"], name: "index_computers_on_sale_id", using: :btree
   add_index "computers", ["school_id"], name: "index_computers_on_school_id", using: :btree
+  add_index "computers", ["skulist_id"], name: "index_computers_on_skulist_id", using: :btree
+  add_index "computers", ["store_id"], name: "index_computers_on_store_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
@@ -78,9 +80,11 @@ ActiveRecord::Schema.define(version: 20180424202920) do
     t.integer  "customer_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "store_id"
   end
 
   add_index "sales", ["customer_id"], name: "index_sales_on_customer_id", using: :btree
+  add_index "sales", ["store_id"], name: "index_sales_on_store_id", using: :btree
   add_index "sales", ["user_id"], name: "index_sales_on_user_id", using: :btree
 
   create_table "schools", force: :cascade do |t|
@@ -94,6 +98,14 @@ ActiveRecord::Schema.define(version: 20180424202920) do
   end
 
   add_index "schools", ["color_id"], name: "index_schools_on_color_id", using: :btree
+
+  create_table "skulists", force: :cascade do |t|
+    t.string   "sku"
+    t.string   "description"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "model_number"
+  end
 
   create_table "stores", force: :cascade do |t|
     t.integer  "school_id"
@@ -125,12 +137,14 @@ ActiveRecord::Schema.define(version: 20180424202920) do
   end
 
   add_foreign_key "computers", "sales"
-  add_foreign_key "computers", "schools"
+  add_foreign_key "computers", "skulists"
+  add_foreign_key "computers", "stores"
   add_foreign_key "customers", "schools"
   add_foreign_key "locations", "stores"
   add_foreign_key "locations", "users"
   add_foreign_key "plans", "schools"
   add_foreign_key "sales", "customers"
+  add_foreign_key "sales", "stores"
   add_foreign_key "sales", "users"
   add_foreign_key "schools", "colors"
   add_foreign_key "stores", "schools"

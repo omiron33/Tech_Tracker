@@ -33,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Date Validation Gem
 gem 'date_validator', '~> 0.9.0'
 
+# Smarter CSV Importing
+gem 'smarter_csv'
+
 # Cleaner console output for queries
 gem 'hirb'
 

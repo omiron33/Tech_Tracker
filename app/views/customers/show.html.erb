@@ -2,8 +2,8 @@
 <% @customer.sales.each do |sale| %>
 <p><%= sale.transaction_date %></p>
 <% sale.computers.each do |computer| %>
-<p><%= computer.sku %></p>
-<p><%= computer.description %></p>
+<p><%= computer.skulist.sku %></p>
+<p><%= computer.skulist.description %></p>
 <p><a href="/computers/<%= computer.id %>"><%= computer.serial %></a></p>
 <% end %>
 <% end %>

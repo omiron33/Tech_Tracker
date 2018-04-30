@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
   resources :computers
   
-  
+  resources :skulists
+
+  get 'process' => 'skulists#proc'
+
   post 'sessions' => 'sessions#create'
 
   delete 'sessions' => 'sessions#destroy'
