@@ -9,6 +9,34 @@
                 <% end %>
             <% end %>
         </div>
+        <div class="col">
+            <% if current_user.user_level >= 4 %>
+                <% if @new.length > 0 %>
+                    <h3>New Team Members to be assigned</h3>
+                    <% @new.each do |member| %>
+                    <div class="level_set">
+                        <p><%= member.first_name %> <%=member.last_name%></p>
+                        <% member.stores.each do |store| %>
+                        <p><%= store.store_number %></p>
+                        <% end %>
+                        
+                        <form action="/users/<%= member.id %>" method="post">
+                            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                            <input type="hidden" name="_method" value="patch">
+                            <select name="level" id="level">
+                                <% @levellist.each do |i, value| %>
+                                    <% if i < current_user.user_level %>
+                                    <option value="<%= i %>"><%= value %></option>
+                                    <% end %>
+                                <% end %>alu
+                            </select>
+                            <input type="submit" name="sublevel" value="Set Level">
+                        </form>
+                    </div>
+                    <% end %>
+                <% end %>
+            <% end %>
+        </div>
     </div>
     <div class="row">
         <div class="col">

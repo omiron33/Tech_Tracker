@@ -10,7 +10,11 @@ class UsersController < ApplicationController
         unless session[:user_id]
             redirect_to root_path
         end
+        
         @team = list_team
+        @new = new_members
+        @levellist = level_list
+        
     end
     def create
         @user = User.new(user_params)
@@ -22,7 +26,7 @@ class UsersController < ApplicationController
         if @user.valid?
             session[:user_id] = @user.id
             if current_user.user_level < 1
-                return redirect_to new_users_path
+                return redirect_to new_user_path
             end
             return redirect_to users_path
         end
@@ -32,8 +36,15 @@ class UsersController < ApplicationController
         redirect_to :back
     end
 
+
     def show
         @user = User.find(params[:id])
+    end
+
+    def update
+        @user = User.find(params[:id])
+        @user.update(user_level: params[:level])
+        redirect_to :back
     end
 
 
@@ -51,6 +62,19 @@ class UsersController < ApplicationController
             @teamlist = []
             current_user.leaders.each {|leader| @teamlist << leader.employees.where.not(id: current_user.id)}
             return @teamlist
+        end
+
+        def new_members
+            @memberlist = []
+            current_user.stores.each do |store|
+                store.users.where(user_level: 0).each {|user| @memberlist << user}
+            end
+            return @memberlist
+        end
+
+        def level_list
+            levellist = { 0 => "New User", 1 => "Employee", 2 => "Veteran Employee", 3 => "", 4 => "Team Lead", 5 => "Assistant Manager", 6 => "Department Manager", 7 => "Store Manager", 8 => "Regional Manager", 9 => "Admin"}
+            return levellist
         end
 
     

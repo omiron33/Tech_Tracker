@@ -6,8 +6,6 @@ To Do list:
 
 Model validations
 
-add new registrant homepage/ registrant authorization for admin/manager
-
 add team member to team on manager & ^ page
 
 add search by serial (api?) and add computer to database, both to inventory and search strings. Have seperate DB for adding maybe, similar to spreadsheet?  / import csv for computer list
