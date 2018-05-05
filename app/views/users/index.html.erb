@@ -1,5 +1,6 @@
 <h1>Welcome, <%= current_user.first_name %></h1>
-<div class="container">
+
+<div class="container" style="background-color:<%= session[:colors]['background-color'] %>; color:<%= session[:colors]['color'] %>">
     <div class="row">
         <div class="col">
             <% if current_user.user_level >= 4 %>

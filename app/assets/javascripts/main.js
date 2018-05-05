@@ -1,14 +1,11 @@
 
 $(document).ready(function () {
 
-    $('select').on('change', function () {
+    $('select[name=sku_dropdown]').on('change', function () {
         console.log("list item selected");
         var value = $('select[name=sku-dropdown]').val();
-        console.log(value)
-        
-
-        
-
+        console.log(value);
+        $('#sku-dropdown-desc').append();
     });
 
 

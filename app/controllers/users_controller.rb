@@ -10,7 +10,10 @@ class UsersController < ApplicationController
         unless session[:user_id]
             redirect_to root_path
         end
-        
+
+        unless session[:colors]
+            session[:colors] = {'background-color' => "white", "color" => "black"}
+        end
         @team = list_team
         @new = new_members
         @levellist = level_list
@@ -44,6 +47,13 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         @user.update(user_level: params[:level])
+        redirect_to :back
+    end
+
+    def colors
+        @primary = Color.find(params[:colors]).primary
+        @secondary = Color.find(params[:colors]).secondary
+        session[:colors] = {"background-color" => @primary, "color" => @secondary}
         redirect_to :back
     end
 

@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
 
         def destroy
         session[:user_id] = nil
+        session[:colors] = nil
         redirect_to root_path
         end
 end
