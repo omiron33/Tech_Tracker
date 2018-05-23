@@ -1,8 +1,8 @@
 <h1>Welcome, <%= current_user.first_name %></h1>
 
-<div class="container" style="background-color:<%= session[:colors]['background-color'] %>; color:<%= session[:colors]['color'] %>">
+<div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col, cardpane">
             <% if current_user.user_level >= 4 %>
                 <h3>Your Direct Reports</h3>
                 <% current_user.employees.each do |employee| %>
@@ -10,7 +10,7 @@
                 <% end %>
             <% end %>
         </div>
-        <div class="col">
+        <div class="col, cardpane">
             <% if current_user.user_level >= 4 %>
                 <% if @new.length > 0 %>
                     <h3>New Team Members to be assigned</h3>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col, cardpane">
             <h3>Your Teammates</h3>
             <% @team.each do |i| %>
                 <% i.each do |teammate| %>
@@ -48,7 +48,7 @@
                 <% end %>
             <% end %>
         </div>
-        <div class="col">
+        <div class="col, cardpane">
             <h3>Recent Team Sales</h3>
             <% current_user.employees.each do |employee| %>
                 <% employee.sales.each do |sale| %>
@@ -61,7 +61,7 @@
                 <% end %>
             <% end %>
         </div>
-        <div class="col">
+        <div class="col, cardpane">
             <h3>Recent Store Sales</h3>
             <% current_user.stores.each do |store| %>
             <% store.sales.each do |sale| %>

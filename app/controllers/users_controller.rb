@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
     skip_before_action :require_login, only: [:log, :new, :create, :index]
 
-    def log 
+    def log
+        unless session[:colors]
+            session[:colors] = {'background-color' => 'slategrey', "color" => "black"}
+        end
         @stores = Store.all
         render 'log'
     end

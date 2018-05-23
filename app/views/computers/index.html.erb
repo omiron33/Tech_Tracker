@@ -1,36 +1,45 @@
-<table>
-    <thead>
-        <tr>
-            <th>
-                Sku
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Model
-            </th>
-            <th>
-                Serial
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @computerlist.each do |computer|  %>
+<div class="transbox">
+    <table class="table table-dark table-striped table-bordered">
+        <thead>
             <tr>
-                <td>
-                    <%= computer.skulist.sku %>
-                </td>
-                <td>
-                    <%= computer.skulist.description %>
-                </td>
-                <td>
-                    <%= computer.skulist.model_number %>
-                </td>
-                <td>
-                    <%= computer.serial %>
-                </td>
+                <th scope="col">
+                    Sku
+                </th>
+                <th scope="col">
+                    Description
+                </th>
+                <th scope="col">
+                    Model
+                </th>
+                <th scope="col">
+                    Serial
+                </th>
+                <th scope="col">
+                    Actions
+                </th>
             </tr>
-        <% end %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% @computerlist.each do |computer|  %>
+                <tr>
+                    <td>
+                        <%= computer.skulist.sku %>
+                    </td>
+                    <td>
+                        <%= computer.skulist.description %>
+                    </td>
+                    <td>
+                        <%= computer.skulist.model_number %>
+                    </td>
+                    <td>
+                        <%= computer.serial %>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary">Show</button>
+                        <button class="btn btn-primary">Sell</button>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

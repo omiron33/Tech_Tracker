@@ -7,10 +7,13 @@
   <%= csrf_meta_tags %>
 
 </head>
-<body>
+<body style="background: linear-gradient(to bottom right,<%= session[:colors]['background-color'] %>,<%= session[:colors]['color'] %>,<%= session[:colors]['background-color'] %>); color: white">
 <%= render "shared/menu" %>
 <%= render "shared/errors" %>
-<%= yield %>
 
+<div id="wrapper">
+<%= yield %>
+</div>
 </body>
 </html>
+
