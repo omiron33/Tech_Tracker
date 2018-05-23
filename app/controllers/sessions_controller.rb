@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
             if @user.authenticate(params[:password])
                 id = @user.id
                 session[:user_id] = @user.id
+                session[:store_id] = @user.stores.first.id
                 if current_user.user_level < 1
                     return redirect_to new_user_path
                 end
@@ -26,9 +27,16 @@ class SessionsController < ApplicationController
         end
         end
 
-        def destroy
-        session[:user_id] = nil
-        session[:colors] = nil
-        redirect_to root_path
-        end
+    def storeset
+        session[:store_id] = params[:set]
+        redirect_to :back
+    end
+
+
+    def destroy
+    session[:user_id] = nil
+    session[:colors] = nil
+    session[:store_id] = nil
+    redirect_to root_path
+    end
 end

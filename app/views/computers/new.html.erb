@@ -1,4 +1,4 @@
-<h1>Receive a new computer by:</h1> 
+<h1>Receive a new computer:</h1> 
 <label for="sku-dropdown">Sku</label>
 <select name="sku-dropdown" id="sku-dropdown">
     <% @skulist.each do |computer| %>
@@ -21,6 +21,23 @@
         </option>
         <% end %>
 </select>
-<div id="compform"></div>
+
+<form action="/computers" id="comp-submit" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="skulist_sku" id="skulist_sku" value="">
+    <label for="serial">
+        Serial<input type="text" name="serial">
+    </label>
+    <button type="Submit" name="Submit">Submit</button>
+</form>
+
+<% if flash[:success].present? %>
+    <div class='flash-success'>
+        <p><%= flash[:success] %></p>
+    </div>
+<% end %>
+
+
+
 
 

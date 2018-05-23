@@ -1,0 +1,36 @@
+<table>
+    <thead>
+        <tr>
+            <th>
+                Sku
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Serial
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @computerlist.each do |computer|  %>
+            <tr>
+                <td>
+                    <%= computer.skulist.sku %>
+                </td>
+                <td>
+                    <%= computer.skulist.description %>
+                </td>
+                <td>
+                    <%= computer.skulist.model_number %>
+                </td>
+                <td>
+                    <%= computer.serial %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

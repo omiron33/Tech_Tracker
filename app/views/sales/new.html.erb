@@ -1,0 +1,49 @@
+<h1>Input a sale</h1>
+
+<form action="">
+    <label for="serial-dropdown">Serial</label>
+    <select name="serial-dropdown" id="serial-dropdown">
+        <% @computerlist.each do |computer| %>
+            <option class="class-option" value="<%= computer.serial %>">
+                <%= computer.serial %>
+            </option>
+            <% end %>
+    </select>
+    <label for="user-dropdown">Employee</label>
+    <select name="user-dropdown" id="user-dropdown">
+        <% @userlist.each do |i| %>
+            <% i.each do |user| %>
+                <option class="class-option" value="<%= user.id %>">
+                    <%= user.first_name %> <%= user.last_name %>
+                </option>
+            <% end %>
+        <% end %>
+    </select>
+    
+</form>
+<div id="selected_computer">
+    <table>
+        <thead>
+            <th>
+                Sku
+            </th>
+            <th>
+                Serial
+            </th>
+            <th>
+                Date Received
+            </th>
+        </thead>
+        <tbody>
+            <td>
+                Sku
+            </td>
+            <td>
+                Serial
+            </td>
+            <td>
+                Received
+            </td>
+        </tbody>
+    </table>
+</div>
