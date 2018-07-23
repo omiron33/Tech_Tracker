@@ -2,7 +2,7 @@
 
 <div class="container">
     <div class="row">
-            <% if cqurrent_user.user_level >= 4 %>
+            <% if current_user.user_level >= 4 %>
         <div class="col, cardpane">
                 <h3>Your Direct Reports</h3>
                 <% current_user.employees.each do |employee| %>
