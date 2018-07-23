@@ -2,16 +2,16 @@
 
 <div class="container">
     <div class="row">
+            <% if cqurrent_user.user_level >= 4 %>
         <div class="col, cardpane">
-            <% if current_user.user_level >= 4 %>
                 <h3>Your Direct Reports</h3>
                 <% current_user.employees.each do |employee| %>
                     <p><a href="/users/<%= employee.id %>"><%= employee.first_name %> <%= employee.last_name %></a></p>
                 <% end %>
-            <% end %>
         </div>
+            <% end %>
+    <% if current_user.user_level >= 4 %>
         <div class="col, cardpane">
-            <% if current_user.user_level >= 4 %>
                 <% if @new.length > 0 %>
                     <h3>New Team Members to be assigned</h3>
                     <% @new.each do |member| %>
