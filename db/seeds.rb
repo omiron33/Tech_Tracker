@@ -3,10 +3,6 @@ Color.create!([
   {primary: "#4D1979", secondary: "#FFFFFF"},
   {primary: "#778899", secondary: "#000000"}
 ])
-Computer.create!([
-  {serial: "CPWRPP75H3QD", rec_date: "2018-04-14", school_id: 1, sale_id: 1, sold: true, skulist_id: 147, store_id: 5},
-  {serial: "SDWDFW32234D", rec_date: "2018-05-23", school_id: nil, sale_id: nil, sold: false, skulist_id: 47, store_id: 1}
-])
 Customer.create!([
   {first_name: "Jon", last_name: "Jenkins", email: "jjenkins@gmail.com", school_id: 1},
   {first_name: "Gladys", last_name: "Knight", email: "AndDaPips@yahoo.com", school_id: 1}
