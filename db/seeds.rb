@@ -3,23 +3,7 @@ Color.create!([
   {primary: "#4D1979", secondary: "#FFFFFF"},
   {primary: "#778899", secondary: "#000000"}
 ])
-Customer.create!([
-  {first_name: "Jon", last_name: "Jenkins", email: "jjenkins@gmail.com", school_id: 1},
-  {first_name: "Gladys", last_name: "Knight", email: "AndDaPips@yahoo.com", school_id: 1}
-])
-Location.create!([
-  {store_id: 5, user_id: 2},
-  {store_id: 5, user_id: 3},
-  {store_id: 1, user_id: 4},
-  {store_id: 1, user_id: 5},
-  {store_id: 1, user_id: 1},
-  {store_id: 5, user_id: 1},
-  {store_id: 6, user_id: 1},
-  {store_id: 5, user_id: 6}
-])
-Sale.create!([
-  {transaction_date: "2018-04-21", user_id: 3, customer_id: 2, store_id: 5}
-])
+
 School.create!([
   {name: "UTA", city: "Arlington", state: "TX", mascot: "Blaze", color_id: 1},
   {name: "TCU", city: "Ft Worth", state: "TX", mascot: "Horned Frog", color_id: 2}
@@ -263,6 +247,15 @@ Skulist.create!([
   {sku: "18339956", description: "MS SURFACEP I5 8GB 256GB BUND", model_number: "2017 Surface Pro"},
   {sku: "17999486", description: "IPAD 9.7 WIFI 128GB GOLD", model_number: "MPGW2LL/A"}
 ])
+
+User.create!([
+  {first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password_digest: "$2a$10$0UrGprkJ/2P4h.KROD72RuLB3A5T/5AHE3X5jn163PhURqSMaV2xG", user_level: 9, employee_number: 9999999},
+  {first_name: "Bryan", last_name: "Adams", email: "badams@gmail.com", password_digest: "$2a$10$8t2lFaklDzaIHgZYyAuH.u.xIPjV9LLkWJu3jJz0cSyzRawQxutsG", user_level: 4, employee_number: 2222222},
+  {first_name: "Morty", last_name: "Morales", email: "morty@yahoo.com", password_digest: "$2a$10$5N0xwx9U1KJ/LBwwG8hQi.8hPLNpR2kSSOD.s/d57ojQMJq/6ESn2", user_level: 1, employee_number: 5555555},
+  {first_name: "Eric", last_name: "Clapton", email: "666666666", password_digest: "$2a$10$VmFBvu2zgRavnuAwhhlgUeIszDUPfkWnwhaxYpa9YMzIDtxA3gqN.", user_level: 2, employee_number: 6666666},
+  {first_name: "Rick", last_name: "Smith", email: "brainiac@gmail.com", password_digest: "$2a$10$RJFxXQVCwnXJO4l6XZktHu.qFqaiQcov/4zg3ilrOCylPShhVK1M2", user_level: 1, employee_number: 4444444},
+  {first_name: "Rod", last_name: "Stewart", email: "rstewart@yahoo.com", password_digest: "$2a$10$el206iaKz3q7Syqg3e6spedpIdRxDZp83pUPO8xcwPyJl9YysYZ0y", user_level: 0, employee_number: 3333333}
+])
 Store.create!([
   {school_id: 1, store_number: 812},
   {school_id: 3, store_number: 1546},
@@ -275,11 +268,24 @@ Team.create!([
   {leader_id: 2, employee_id: 4},
   {leader_id: 2, employee_id: 5}
 ])
-User.create!([
-  {first_name: "Admin", last_name: "Admin", email: "admin@admin.com", password_digest: "$2a$10$0UrGprkJ/2P4h.KROD72RuLB3A5T/5AHE3X5jn163PhURqSMaV2xG", user_level: 9, employee_number: 9999999},
-  {first_name: "Bryan", last_name: "Adams", email: "badams@gmail.com", password_digest: "$2a$10$8t2lFaklDzaIHgZYyAuH.u.xIPjV9LLkWJu3jJz0cSyzRawQxutsG", user_level: 4, employee_number: 2222222},
-  {first_name: "Morty", last_name: "Morales", email: "morty@yahoo.com", password_digest: "$2a$10$5N0xwx9U1KJ/LBwwG8hQi.8hPLNpR2kSSOD.s/d57ojQMJq/6ESn2", user_level: 1, employee_number: 5555555},
-  {first_name: "Eric", last_name: "Clapton", email: "666666666", password_digest: "$2a$10$VmFBvu2zgRavnuAwhhlgUeIszDUPfkWnwhaxYpa9YMzIDtxA3gqN.", user_level: 2, employee_number: 6666666},
-  {first_name: "Rick", last_name: "Smith", email: "brainiac@gmail.com", password_digest: "$2a$10$RJFxXQVCwnXJO4l6XZktHu.qFqaiQcov/4zg3ilrOCylPShhVK1M2", user_level: 1, employee_number: 4444444},
-  {first_name: "Rod", last_name: "Stewart", email: "rstewart@yahoo.com", password_digest: "$2a$10$el206iaKz3q7Syqg3e6spedpIdRxDZp83pUPO8xcwPyJl9YysYZ0y", user_level: 0, employee_number: 3333333}
+Location.create!([
+  {store_id: 5, user_id: 2},
+  {store_id: 5, user_id: 3},
+  {store_id: 1, user_id: 4},
+  {store_id: 1, user_id: 5},
+  {store_id: 1, user_id: 1},
+  {store_id: 5, user_id: 1},
+  {store_id: 6, user_id: 1},
+  {store_id: 5, user_id: 6}
+])
+Sale.create!([
+  {transaction_date: "2018-04-21", user_id: 3, customer_id: 2, store_id: 5}
+])
+Computer.create!([
+  {serial: "CPWRPP75H3QD", rec_date: "2018-04-14", school_id: 1, sale_id: 1, sold: true, skulist_id: 147, store_id: 5},
+  {serial: "SDWDFW32234D", rec_date: "2018-05-23", school_id: nil, sale_id: nil, sold: false, skulist_id: 47, store_id: 1}
+])
+Customer.create!([
+  {first_name: "Jon", last_name: "Jenkins", email: "jjenkins@gmail.com", school_id: 1},
+  {first_name: "Gladys", last_name: "Knight", email: "AndDaPips@yahoo.com", school_id: 1}
 ])
